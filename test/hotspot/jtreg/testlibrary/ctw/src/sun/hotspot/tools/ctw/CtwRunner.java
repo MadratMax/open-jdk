@@ -319,6 +319,7 @@ public class CtwRunner {
                 "-XX:+StressGCM",
                 "-XX:+StressIGVN",
                 "-XX:+StressCCP",
+                "-XX:+StressLoopPeeling",
                 "-XX:+StressMacroExpansion",
                 "-XX:+StressMacroElimination",
                 "-XX:+StressIncrementalInlining",
