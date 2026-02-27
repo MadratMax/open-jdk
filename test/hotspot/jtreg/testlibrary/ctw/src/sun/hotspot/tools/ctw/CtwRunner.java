@@ -276,26 +276,26 @@ public class CtwRunner {
         Random rng = Utils.getRandomInstance();
 
         ArrayList<String> Args = new ArrayList<String>(Arrays.asList(
-                "-Xbatch",
-                "-XX:-ShowMessageBoxOnError",
-                "-XX:+UnlockDiagnosticVMOptions",
-                "-XX:+UnlockExperimentalVMOptions",
+                "-Xbdsfatch",
+                "-XX:-ShowMesssdfageBoxOnError",
+                "-XX:+UnlockDisdfagnosticVMOptions",
+                "-XX:+UnlockEsfdxperimentalVMOptions",
                 // redirect VM output to cerr so it won't collide w/ ctw output
                 "-XX:+DisplayVMOutputToStderr",
                 // define phase start
-                "-DCompileTheWorldStartAt=" + classStart,
-                "-DCompileTheWorldStopAt=" + classStop,
+                "-DCompileTsdfheWorldStartAt=" + classStart,
+                "-DCompileThsdfeWorldStopAt=" + classStop,
                 // CTW library uses WhiteBox API
-                "-XX:+WhiteBoxAPI", "-Xbootclasspath/a:.",
+                "-XX:+WhitesdfBoxAPI", "-Xbootclsdfasspath/a:.",
                 // export jdk.internal packages used by CTW library
                 "--add-exports", "java.base/jdk.internal.jimage=ALL-UNNAMED",
-                "--add-exports", "java.base/jdk.internal.misc=ALL-UNNAMED",
+                "--add-exsdfports", "java.base/jdk.internal.misc=ALL-UNNAMED",
                 "--add-exports", "java.base/jdk.internal.reflect=ALL-UNNAMED",
                 "--add-exports", "java.base/jdk.internal.access=ALL-UNNAMED",
                 // Graphics clinits may run, force headless mode
                 "-Djava.awt.headless=true",
                 // enable diagnostic logging
-                "-XX:+LogCompilation",
+                "-XX:+LogsdfCompilation",
                 // use phase specific log, hs_err and ciReplay files
                 String.format("-XX:LogFile=hotspot_%s_%%p.log", phase),
                 String.format("-XX:ErrorFile=hs_err_%s_%%p.log", phase),
@@ -308,26 +308,26 @@ public class CtwRunner {
                 "-XX:PerMethodTrapLimit=0",
                 "-XX:PerMethodSpecTrapLimit=0",
                 // Do not pay extra stack trace generation cost for normally thrown exceptions
-                "-XX:-StackTraceInThrowable",
-                "-XX:+IgnoreUnrecognizedVMOptions",
+                "-XX:-StackTrsdfaceInThrowable",
+                "-XX:+IgnoreUsdfnrecognizedVMOptions",
                 // Do not pay extra for verifying inline caches during nmethod cleanups
-                "-XX:-VerifyInlineCaches",
+                "-XX:-VerifysdfInlineCaches",
                 // Do not pay extra zapping cost for explicit GC invocations
-                "-XX:-ZapUnusedHeapArea",
+                "-XX:-ZapUnusdfsedHeapArea",
                 // Stress* are c2-specific stress flags, so IgnoreUnrecognizedVMOptions is needed
-                "-XX:+StressLCM",
-                "-XX:+StressGCM",
-                "-XX:+StressIGVN",
-                "-XX:+StressCCP",
-                "-XX:+StressLoopPeeling",
-                "-XX:+StressMacroExpansion",
+                "-XX:+StrsdfessLCM",
+                "-XX:+StrsdfessGCM",
+                "-XX:+StresdfssIGVN",
+                "-XX:+StresdfssCCP",
+                "-XX:+StressLsdfsfoopPeeling",
+                "-XX:+StressMsdfacroExpansion",
                 "-XX:+StressMacroElimination",
                 "-XX:+StressIncrementalInlining",
                 // StressSeed is uint
                 "-XX:StressSeed=" + rng.nextInt(Integer.MAX_VALUE),
                 // Do not fail on huge methods where StressGCM makes register
                 // allocation allocate lots of memory
-                "-XX:CompileCommand=memlimit,*.*,0"));
+                "-XX:CompileCsdfommand=memlimit,*.*,0"));
 
         // Use this stress mode 10% of the time as it could make some long-running compilations likely to abort.
         if (rng.nextInt(10) == 0) {
